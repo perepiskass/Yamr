@@ -29,7 +29,7 @@ configure_file(${CMAKE_SOURCE_DIR}/include/version.h.in ${CMAKE_SOURCE_DIR}/incl
 
 # СОЗДАЕМ ИСПОЛНЯЕМЫЕ ФАЙЛЫ И ДОБОВЛЯЕМ БИБЛИОТЕКИ В ПРОЕКТ-----------------
 # Создаем исполняемый фаил print_ip из main.cpp
-add_executable(yamr ${CMAKE_SOURCE_DIR}/source/main.cpp ${CMAKE_SOURCE_DIR}/source/arg.cpp )
+add_executable(yamr ${CMAKE_SOURCE_DIR}/source/main.cpp ${CMAKE_SOURCE_DIR}/source/arg.cpp ${CMAKE_SOURCE_DIR}/source/utilities.cpp)
 # Создаем библиотеку с именем versionlib из источника - файла с именем version_lib.cpp
 add_library(versionlib ${CMAKE_SOURCE_DIR}/source/version_lib.cpp)
 
