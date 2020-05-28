@@ -7,11 +7,49 @@
 #include <set>
 #include <memory>
 #include <algorithm>
+#include <list>
 
 
 namespace fs = boost::filesystem; 
 
-std::vector<std::pair<size_t,size_t>> getBorders(const std::string& name_file,size_t m)
+std::string test(size_t i)
+{
+    std::string str{"It is a test number - "};
+    str+= std::to_string(i);
+    return str;
+}
+
+std::string test2(std::string file_name,size_t offset,size_t lenght)
+{
+     char* buf = new char[lenght+1];
+        std::ifstream fread(file_name);
+        if(!fread.is_open()) std::cout << "ERROR OPEN FILE\n";
+      fread.seekg(offset,std::ios::beg);
+      fread.read(buf,lenght);
+      fread.clear();
+      buf[lenght] = '\0';
+    //   std::cout << buf << std::endl;
+    std::string str{buf};
+      delete[] buf;
+      return str;
+}
+
+std::string test3(std::string file_name,size_t offset,size_t lenght)
+{
+     char* buf = new char[lenght+1];
+        std::ifstream fread(file_name);
+        if(!fread.is_open()) std::cout << "ERROR OPEN FILE\n";
+      fread.seekg(offset,std::ios::beg);
+      fread.getline(buf,lenght);
+      fread.clear();
+      buf[lenght] = '\0';
+    //   std::cout << buf << std::endl;
+    std::string str{buf,3};
+      delete[] buf;
+      return str;
+}
+
+std::vector<std::pair<size_t,size_t>> getBorders(const std::string& name_file,const size_t m)
 {
     std::vector<size_t> result;
     size_t file_size = fs::file_size(fs::path(name_file));
@@ -37,20 +75,12 @@ std::vector<std::pair<size_t,size_t>> getBorders(const std::string& name_file,si
             }
             size_t left_border = fread.tellg();
 
-            // char b;
-            // fread.get(b);
-            // std::cout << "left - "<< b << ' ' << left_border << std::endl;
-            // fread.seekg(-1,std::ios::cur);
-
             while (fread.get(buff))
             {
                 if(buff == delim) break;
             }
             size_t right_border = fread.tellg();
 
-            // fread.get(b);
-            // std::cout << "right - " << b << ' ' << right_border << std::endl;
-            // fread.seekg(right_border,std::ios::beg);
             fread.clear();
 
             if(part_size*i - left_border < right_border - part_size*i)
@@ -66,9 +96,7 @@ std::vector<std::pair<size_t,size_t>> getBorders(const std::string& name_file,si
         }
     }
     fread.close();
-    // std::cout << "EXIT FROM CICLE\n";
     result.push_back(file_size);
-    // std::cout << "After push back\n";
     std::vector<std::pair<size_t,size_t>> offset_size;
     std::sort(std::begin(result),std::end(result));
     result.resize(std::unique(std::begin(result),std::end(result))-std::begin(result));
@@ -80,3 +108,58 @@ std::vector<std::pair<size_t,size_t>> getBorders(const std::string& name_file,si
     return offset_size;
 }
 
+std::vector<std::pair<size_t,size_t>> getBorders(const std::list<std::string>& source,size_t r)
+{
+    std::vector<std::pair<size_t,size_t>> result;
+    if(r == 1)
+    {
+        result.emplace_back(std::make_pair(0,source.size()));
+        return result;
+    }
+    else if (r > source.size()) r = source.size();
+    size_t part_size = source.size() / r;
+    std::vector<size_t> offsets;
+    offsets.emplace_back(0);
+    auto it = source.begin();
+
+    for(size_t i=1 ; i < r ; ++i)
+    {
+        std::advance(it, part_size);
+        auto cur = it;
+        size_t offset_left = 0;
+        while(it != source.begin())
+        {
+            if (*(--it) != *cur) break;
+            else
+            {
+                ++offset_left;
+            }
+        }
+
+        it = cur;
+        size_t offset_right = 0;
+        while(it != source.end())
+        {
+            if (*(++it) != *cur) break;
+            else
+            {
+                ++offset_right;
+            }
+        }
+
+        if(offset_left < offset_right) offsets.emplace_back(part_size*i - offset_left);
+        else offsets.emplace_back(part_size*i + offset_right);
+
+        it = cur;
+    }
+    offsets.emplace_back(source.size());
+
+    std::sort(std::begin(offsets),std::end(offsets));
+    result.resize(std::unique(std::begin(offsets),std::end(offsets))-std::begin(offsets));
+    for (size_t i = 0; i < offsets.size()-1;++i)
+    {
+      result.emplace_back(std::make_pair(offsets.at(i),offsets.at(i+1) - offsets.at(i)));
+    }
+
+    return result;
+}

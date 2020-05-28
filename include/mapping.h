@@ -7,7 +7,7 @@
 #include <iostream>
 
 
-std::list<std::string> mapping(size_t min, size_t offset, size_t lenght, const std::string& file_name)
+std::list<std::string> mapping( const std::string& file_name,size_t min, size_t offset, size_t lenght)
 {
     std::list<std::string> result;
     std::ifstream fread (file_name);
@@ -17,17 +17,23 @@ std::list<std::string> mapping(size_t min, size_t offset, size_t lenght, const s
         return result;
     }
 
-    char temp[lenght+1];
+    // char temp[lenght+1];
     fread.seekg(offset,std::ios::beg);
-    auto start = fread.tellg();
-    auto cur = start;
-    while (cur - start <= lenght)
+    size_t start = fread.tellg();
+    size_t cur = start;
+    while (cur - start < lenght)
     {    
-        fread.getline(temp,lenght);
+        char* temp = new char[lenght+1];
+        fread.read(temp,lenght);
         auto cur = fread.tellg();
+        // std::string str{temp,min};
+        std::cout << temp << std::endl;
         result.push_back(std::string(temp,min));
         cur = fread.tellg();
+        delete[] temp;
     }
+
+    result.sort();
 
     return result;
 }
