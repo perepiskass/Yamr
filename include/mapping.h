@@ -6,14 +6,13 @@
 #include <fstream>
 #include <iostream>
 #include <boost/filesystem.hpp>
+#include "pcout.h"
 
 namespace fs = boost::filesystem;
 
 namespace mapping
 {
-
-
-    std::list<std::string> mapping( const std::string& file_name,size_t min, size_t offset, size_t lenght)
+    std::list<std::string> mapping( const std::string& file_name,const size_t min,const size_t offset, size_t lenght)
     {
         std::list<std::string> result;
         std::ifstream fread (file_name);
@@ -25,25 +24,27 @@ namespace mapping
 
         fread.seekg(offset,std::ios::beg);
         char temp;
+        size_t count = min;
         std::string str;
-        while (fread.get(temp))
-        {    
-            if(min > 0)
+        for(size_t i = 0; i < lenght; ++i)
+        {
+            fread.get(temp);
+            if(temp == '\n') 
             {
-                str += temp;
-                --min;
-                if(min == 0)
+                result.push_back(str);
+                count = min;
+                str.erase();
+            }
+            else
+            {
+                if(count > 0)
                 {
-                    result.emplace_back(str);
-                    str.erase();
+                    str+=temp;
+                    --count;
                 }
             }
-            if(temp == '\n') min = 3;
-    
-            --lenght;
-            if(!lenght) break;
-        }   
-
+        }
+        if(!str.empty()) result.push_back(str);
         result.sort();
 
         return result;
@@ -95,7 +96,7 @@ namespace mapping
             }
         }
         fread.close();
-        result.push_back(file_size+1);
+        result.push_back(file_size);
         std::vector<std::pair<size_t,size_t>> offset_size;
         std::sort(std::begin(result),std::end(result));
         result.resize(std::unique(std::begin(result),std::end(result))-std::begin(result));

@@ -23,14 +23,14 @@ int main(int argc, char *argv[])
     size_t m = args.second.first;
     size_t r = args.second.second;
     
-    size_t min = 3;
-    // bool cicle = true;
-    // while (cicle)
-    // {
-    //   cicle = false;
+    size_t min = 1;
+    bool cicle = true;
+    while (cicle)
+    {
+      cicle = false;
+    std::cout << "Mapping\n";
       // Выполнение map функции в потоках------------------------------
       auto map_borders = mapping::getBorders(file_name,m);
-      std::cout << "TUT1_____________";
 
       ThreadPool thread_m{map_borders.size()};
       std::vector<std::future<std::list<std::string>>> res;
@@ -38,63 +38,50 @@ int main(int argc, char *argv[])
       {
         res.emplace_back(thread_m.addTask(mapping::mapping,file_name,min,map_borders[i].first,map_borders[i].second));
       }
-      std::cout << "TUT2_____________";
-
+      std::cout << "after map\n";
       // Объединение всех результатов работы map функций---------------
       std::list<std::string> union_list;
       for (size_t i = 0; i < res.size();++i)
       {
-        union_list.merge(res[i].get());
+        auto temp = res[i].get();
+        // std::cout << "size " << i << temp.size() << std::endl;
+        // for(auto& it : temp) std::cout <<"str -"<<it.size() << ' '<< it << std::endl;
+        // std::cout << std::endl;
+        union_list.merge(temp);
       }
-      std::cout << "TUT3_____________";
+      std::cout << "Size " << union_list.size() << std::endl;
+      for(auto& i : union_list) std::cout << i << ' ';
+      std::cout << std::endl;
+
       // Выполнение reduce функции в потоках---------------------------
       auto reduce_borders = reduce::getBorders(union_list,r);
+
+      for(auto& rb : reduce_borders) std::cout << rb.first << ' ' << rb.second << std::endl;
+
+
       ThreadPool thread_r{reduce_borders.size()};
       std::vector<std::future<bool>> red_result;
       for(size_t i = 0;i < reduce_borders.size();++i)
       {
         red_result.emplace_back(thread_r.addTask(reduce::reduce,union_list,reduce_borders[i].first,reduce_borders[i].second));
       }
-
+      std::cout << "RESULT:\n";
       // Получение и проверка результатов
       for(auto& i : red_result)
       {
-        std::cout << i.get() << ' ';
-        // if(i.get()) continue;
-        // else
-        // {
-        //   // cicle = true;
-        //   ++min;
-        //   // break;
-        // }
+        auto temp_result = i.get();
+        std::cout << temp_result << ' ';
+        if(temp_result) continue;
+        else
+        {
+          cicle = true;
+          ++min;
+          break;
+        }
       }
-    // }
+    }
 
     std::cout << "Minimum - " << min << std::endl;
-
-
-
-
-    // for(auto& b : borders)
-    // {
-    //   std::cout << b.first << ' ' << b.second << std::endl;
-    // }
-    // for(auto& i : union_list)
-    // {
-    //   std::cout << i << ' ';
-    // }
-    // std::cout << std::endl;
-    // for(size_t i = 0; i < borders.size(); ++i)
-    // {
-    //   std::list<std::string>::iterator it = union_list.begin();
-    //   std::advance(it,borders[i].first);
-    //   for(size_t z = 0;z < borders[i].second;++z)
-    //   {
-    //     std::cout << *it << ' ';
-    //     ++it;
-    //   }
-    //   std::cout << std::endl;
-    // }
   }
   
   catch(const std::exception& e)

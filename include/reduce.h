@@ -8,23 +8,24 @@
 #include <list>
 #include <vector>
 #include <algorithm>
+#include <map>
 
 namespace reduce
 {
     bool reduce(const std::list<std::string>& input,const size_t offset,const size_t lenght)
     {
-        std::set<std::string> result;
-        auto it  = input.begin();
+        auto it = input.begin();
         std::advance(it,offset);
-        auto end = it;
-        std::advance(end,lenght);
-        for( ;it!=end ;++it)
+        std::map<std::string,size_t> result;
+        for(size_t i = 0; i < lenght; ++i)
         {
-            if(result.find(*it) ==result.end()) result.insert(*it);
-            else return false;
+            if(result.find(*it)!=result.end()) return false;
+            else result[*it] = 1;
+            ++it;
         }
         
-        std::fstream file("reduce_"+std::to_string(offset),std::ios::ate);
+        std::string filename = "reduce " + std::to_string(offset);
+        std::fstream file(filename,std::ios::out | std::ios::trunc);
         if(!file.is_open())
         {
             std::cout << "error open file reduce\n";
@@ -33,7 +34,7 @@ namespace reduce
         {
             for(const auto& str : result)
             {
-                file << str << ": 0\n";
+                file << str.first << ": " << str.second << std::endl;
             }
             file.close();
         }
@@ -49,6 +50,7 @@ namespace reduce
             return result;
         }
         else if (r > source.size()) r = source.size();
+        
         size_t part_size = source.size() / r;
         // std::cout << part_size << " part\n";
         // std::cout << source.size() << " source size\n";
