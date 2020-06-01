@@ -12,19 +12,25 @@
 
 namespace reduce
 {
-    bool reduce(const std::list<std::string>& input,const size_t offset,const size_t lenght)
+    bool reduce(const std::list<std::string>& input,const bool all_string,size_t number_thread,const size_t offset,const size_t lenght)
     {
+        bool copies = false;
         auto it = input.begin();
         std::advance(it,offset);
         std::map<std::string,size_t> result;
         for(size_t i = 0; i < lenght; ++i)
         {
-            if(result.find(*it)!=result.end()) return false;
+            if(result.find(*it)!=result.end())
+            {
+                copies = true;
+                ++result[*it];
+            }
             else result[*it] = 1;
             ++it;
         }
-        
-        std::string filename = "reduce " + std::to_string(offset);
+        if((copies == true && all_string == true) ||  copies == false)
+        {
+        std::string filename = "reduce " + std::to_string(number_thread);
         std::fstream file(filename,std::ios::out | std::ios::trunc);
         if(!file.is_open())
         {
@@ -38,7 +44,8 @@ namespace reduce
             }
             file.close();
         }
-        return true;
+        }
+        return copies;
     }
 
     std::vector<std::pair<size_t,size_t>> getBorders(const std::list<std::string>& source,size_t r)
@@ -51,10 +58,7 @@ namespace reduce
         }
         else if (r > source.size()) r = source.size();
         
-        size_t part_size = source.size() / r;
-        // std::cout << part_size << " part\n";
-        // std::cout << source.size() << " source size\n";
-        std::vector<size_t> offsets;
+        size_t part_size = source.size() / r;        std::vector<size_t> offsets;
         offsets.emplace_back(0);
         auto it = source.begin();
 
@@ -74,7 +78,6 @@ namespace reduce
                     ++offset_left;
                 }
             }
-            // std::cout << "left " << offset_left << std::endl;
             it = cur;
             size_t offset_right = 0;
             while(it != source.end())
@@ -89,18 +92,14 @@ namespace reduce
                     ++offset_right;
                 }
             }
-            // std::cout << "right " << offset_right << std::endl;
 
             if(offset_left < offset_right) offsets.emplace_back(part_size*i - offset_left);
             else offsets.emplace_back(part_size*i + offset_right);
             it = cur;
         }
         offsets.emplace_back(source.size());
-        // for(auto& a : offsets) std::cout << a << ' ';
-        // std::cout << std::endl;
         std::sort(std::begin(offsets),std::end(offsets));
         offsets.resize(std::unique(std::begin(offsets),std::end(offsets))-std::begin(offsets));
-        // std::cout << "\nOffset size " << offsets.size() << std::endl;
 
         for (size_t i = 0; i < offsets.size()-1;++i)
         {

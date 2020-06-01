@@ -66,14 +66,14 @@ auto ThreadPool::addTask(F&& f, Args&&... args)-> std::future<typename std::resu
 
 ThreadPool::~ThreadPool()
 {
-    // {
-    //     std::unique_lock<std::mutex> lock(queue_mutex);
-    //     stop = true;
-    // }
-    // // cv.notify_all();
+    {
+        std::unique_lock<std::mutex> lock(queue_mutex);
+        stop = true;
+    }
+    cv.notify_all();
     for(auto &worker: pool)
     {
-        worker.detach();
+        worker.join();
     }
 
 

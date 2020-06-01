@@ -12,26 +12,29 @@ namespace fs = boost::filesystem;
 
 namespace mapping
 {
-    std::list<std::string> mapping( const std::string& file_name,const size_t min,const size_t offset, size_t lenght)
+    std::pair<bool,std::list<std::string>> mapping( const std::string& file_name,const size_t min,const size_t offset, size_t lenght)
     {
         std::list<std::string> result;
         std::ifstream fread (file_name);
         if (!fread.is_open())
         {
             std::cout << "ERR open file\n";
-            return result;
+            return std::make_pair(0,result);
         }
 
         fread.seekg(offset,std::ios::beg);
         char temp;
         size_t count = min;
         std::string str;
+        std::vector<bool> max_lenght;
         for(size_t i = 0; i < lenght; ++i)
         {
             fread.get(temp);
             if(temp == '\n') 
             {
-                result.push_back(str);
+                result.emplace_back(str);
+                if(count) max_lenght.emplace_back(true);
+                else max_lenght.emplace_back(false);
                 count = min;
                 str.erase();
             }
@@ -44,10 +47,21 @@ namespace mapping
                 }
             }
         }
-        if(!str.empty()) result.push_back(str);
+        if(!str.empty())
+        {
+            result.emplace_back(str);
+                if(count) max_lenght.emplace_back(true);
+                else max_lenght.emplace_back(false);
+        }
         result.sort();
 
-        return result;
+        bool all_string = true;
+        for(const auto& i : max_lenght)
+        {
+            if(!i) all_string = false;
+        }
+
+        return std::make_pair(all_string,result);
     }
 
 
@@ -66,7 +80,6 @@ namespace mapping
             {
                 fread.seekg(part_size*i,std::ios::beg);
                 std::size_t lenght = fread.tellg();
-                // std::cout << lenght << std::endl;
                 char buff;
                 for(size_t l = lenght;l >0 ;--l)
                 {
