@@ -8,10 +8,14 @@
 #include <mutex>
 #include <condition_variable>
 
+
+/**
+ * @brief Класс обеспичивающий создание очереди потоков, и добавления в эти потоки задачь для выполнения
+ */
 class ThreadPool
 {
     public:
-        ThreadPool(size_t thread_count);
+        ThreadPool(const size_t thread_count);
 
         template<class F, class... Args>
         auto addTask(F&& f, Args&&... args) -> std::future<typename std::result_of<F(Args...)>::type>;  /// Добавляем задачу и сразу получаем на нее объект future
@@ -26,11 +30,11 @@ class ThreadPool
         bool stop;
 };
 
-ThreadPool::ThreadPool(size_t thread_count):stop(false)
+ThreadPool::ThreadPool(const size_t thread_count):stop(false)
 {
     for(size_t i = 0;i < thread_count;++i)
         pool.emplace_back([this](){
-                // while(true)
+                // while(true)      Каждый процесс получает по одной задаче, если оставляем цикл то возможно один процесс будет отрабатывать больше чем один раз
                 // {
                     std::function<void()> task;
 

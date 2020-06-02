@@ -1,6 +1,9 @@
 #include <gtest/gtest.h>
 #include "version_lib.h"
 
+#include "threadpool.h"
+#include <set>
+
 
 
 
@@ -17,6 +20,27 @@ TEST(version_test_case, version_test_major)
 {
     EXPECT_EQ(version_major(), 1);
 }
+
+// Тест кейсы на проверку тред
+TEST(threadpool_test_case, count_threadpool_test)
+{
+    size_t count = 5;
+    ThreadPool tp{count};
+    std::vector<std::future<std::thread::id>> thread_futures;
+    for(size_t i = 0;i<count;++i)
+    {
+        thread_futures.emplace_back(tp.addTask([](){return std::this_thread::get_id();}));
+    }
+    std::set<std::thread::id> thread_names;
+    for(auto& id : thread_futures)
+    {
+        thread_names.emplace(id.get());
+    }
+
+    EXPECT_EQ(thread_names.size(), count);
+}
+
+
 
 
 

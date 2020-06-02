@@ -6,13 +6,16 @@
 #include <fstream>
 #include <iostream>
 #include <boost/filesystem.hpp>
-#include "pcout.h"
 
 namespace fs = boost::filesystem;
 
 namespace mapping
 {
-    std::pair<bool,std::list<std::string>> mapping( const std::string& file_name,const size_t min,const size_t offset, size_t lenght)
+    /**
+     * @brief Функция выбора подстрок заданного размера из файла с определенными границами строк
+     * @return Возвращает пару: first - флаг, сигнализирующий, что была считана самая длинная строка в диапазоне в список искомых подстрок, second - список искомых подстрок
+     */
+    std::pair<bool,std::list<std::string>> mapping( const std::string& file_name,const size_t min,const size_t offset,const size_t lenght)
     {
         std::list<std::string> result;
         std::ifstream fread (file_name);
@@ -64,7 +67,10 @@ namespace mapping
         return std::make_pair(all_string,result);
     }
 
-
+    /**
+     * @brief Функция получения границ для функции выделения подстрок, учитывает то, что границы должны проходить с начала строки
+     * @return Возвращает вектор пар: first - начальная граница, second - кол-во символов для обработки в блоке
+     */
     std::vector<std::pair<size_t,size_t>> getBorders(const std::string& name_file,const size_t m)
     {
         std::vector<size_t> result;
