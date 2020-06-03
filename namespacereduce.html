@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Yamr: Пространство имен reduce</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Yamr
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Функции</a>  </div>
+  <div class="headertitle">
+<div class="title">Пространство имен reduce</div>  </div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:afb1ba0a288273dbdf9c14d11095368a5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacereduce.html#afb1ba0a288273dbdf9c14d11095368a5">reduce</a> (const std::list&lt; std::string &gt; &amp;input, const bool all_string, const size_t number_thread, const size_t offset, const size_t lenght)</td></tr>
+<tr class="memdesc:afb1ba0a288273dbdf9c14d11095368a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция подсчета одинаковых экземпляров в заданном списке результат записывается в файл(при условии что нет дубликатов строк в исходном файле)  <a href="#afb1ba0a288273dbdf9c14d11095368a5">Подробнее...</a><br /></td></tr>
+<tr class="separator:afb1ba0a288273dbdf9c14d11095368a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5dc81ba8a03a8d75d9c2ca4eeddd5ba"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::pair&lt; size_t, size_t &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacereduce.html#ae5dc81ba8a03a8d75d9c2ca4eeddd5ba">getBorders</a> (const std::list&lt; std::string &gt; &amp;source, size_t r)</td></tr>
+<tr class="memdesc:ae5dc81ba8a03a8d75d9c2ca4eeddd5ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция получения границ для функции подсчета, учитывает то, что в одинаковые элементы должны попасть в один поток для обработки  <a href="#ae5dc81ba8a03a8d75d9c2ca4eeddd5ba">Подробнее...</a><br /></td></tr>
+<tr class="separator:ae5dc81ba8a03a8d75d9c2ca4eeddd5ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Функции</h2>
+<a id="ae5dc81ba8a03a8d75d9c2ca4eeddd5ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5dc81ba8a03a8d75d9c2ca4eeddd5ba">&#9670;&nbsp;</a></span>getBorders()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::pair&lt;size_t,size_t&gt; &gt; reduce::getBorders </td>
+          <td>(</td>
+          <td class="paramtype">const std::list&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>r</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Функция получения границ для функции подсчета, учитывает то, что в одинаковые элементы должны попасть в один поток для обработки </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Возвращает вектор пар: first - начальная граница, second - кол-во символов для обработки в блоке </dd></dl>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacereduce_ae5dc81ba8a03a8d75d9c2ca4eeddd5ba_icgraph.png" border="0" usemap="#namespacereduce_ae5dc81ba8a03a8d75d9c2ca4eeddd5ba_icgraph" alt=""/></div>
+<map name="namespacereduce_ae5dc81ba8a03a8d75d9c2ca4eeddd5ba_icgraph" id="namespacereduce_ae5dc81ba8a03a8d75d9c2ca4eeddd5ba_icgraph">
+<area shape="rect" id="node2" href="gtest_8cpp.html#a0974b2395039cb9c0c39ef44906776ee" title="TEST" alt="" coords="199,5,253,32"/>
+<area shape="rect" id="node3" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="199,56,253,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="afb1ba0a288273dbdf9c14d11095368a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb1ba0a288273dbdf9c14d11095368a5">&#9670;&nbsp;</a></span>reduce()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool reduce::reduce </td>
+          <td>(</td>
+          <td class="paramtype">const std::list&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool&#160;</td>
+          <td class="paramname"><em>all_string</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>number_thread</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>lenght</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Функция подсчета одинаковых экземпляров в заданном списке результат записывается в файл(при условии что нет дубликатов строк в исходном файле) </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Возвращает true - если есть копии в списке и false если копий в обрабатываемом диапазоне нет </dd></dl>
+<p>Считаем колличество одинаковых строк в заданном диапазоне</p>
+<p>Записываем данные в файл, при условии, что копий не найдено или если найдены то они являються задублированными строками в исходнике </p>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacereduce_afb1ba0a288273dbdf9c14d11095368a5_icgraph.png" border="0" usemap="#namespacereduce_afb1ba0a288273dbdf9c14d11095368a5_icgraph" alt=""/></div>
+<map name="namespacereduce_afb1ba0a288273dbdf9c14d11095368a5_icgraph" id="namespacereduce_afb1ba0a288273dbdf9c14d11095368a5_icgraph">
+<area shape="rect" id="node2" href="gtest_8cpp.html#a8bdfd25c28e35fa8374fa11c4f39636e" title="TEST" alt="" coords="172,5,227,32"/>
+<area shape="rect" id="node3" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="172,56,227,83"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

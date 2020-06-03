@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Yamr: Пространство имен mapping</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Yamr
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Функции</a>  </div>
+  <div class="headertitle">
+<div class="title">Пространство имен mapping</div>  </div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:ac0475018aff3771999ea32000c2fb898"><td class="memItemLeft" align="right" valign="top">std::pair&lt; bool, std::list&lt; std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemapping.html#ac0475018aff3771999ea32000c2fb898">mapping</a> (const std::string &amp;file_name, const size_t min, const size_t offset, const size_t lenght)</td></tr>
+<tr class="memdesc:ac0475018aff3771999ea32000c2fb898"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция выбора подстрок заданного размера из файла с определенными границами строк  <a href="#ac0475018aff3771999ea32000c2fb898">Подробнее...</a><br /></td></tr>
+<tr class="separator:ac0475018aff3771999ea32000c2fb898"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e136a227baae29a61ffc73023427b43"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::pair&lt; size_t, size_t &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemapping.html#a2e136a227baae29a61ffc73023427b43">getBorders</a> (const std::string &amp;name_file, const size_t m)</td></tr>
+<tr class="memdesc:a2e136a227baae29a61ffc73023427b43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция получения границ для функции выделения подстрок, учитывает то, что границы должны проходить с начала строки  <a href="#a2e136a227baae29a61ffc73023427b43">Подробнее...</a><br /></td></tr>
+<tr class="separator:a2e136a227baae29a61ffc73023427b43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Функции</h2>
+<a id="a2e136a227baae29a61ffc73023427b43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e136a227baae29a61ffc73023427b43">&#9670;&nbsp;</a></span>getBorders()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::pair&lt;size_t,size_t&gt; &gt; mapping::getBorders </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name_file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>m</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Функция получения границ для функции выделения подстрок, учитывает то, что границы должны проходить с начала строки </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Возвращает вектор пар: first - начальная граница, second - кол-во символов для обработки в блоке </dd></dl>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacemapping_a2e136a227baae29a61ffc73023427b43_icgraph.png" border="0" usemap="#namespacemapping_a2e136a227baae29a61ffc73023427b43_icgraph" alt=""/></div>
+<map name="namespacemapping_a2e136a227baae29a61ffc73023427b43_icgraph" id="namespacemapping_a2e136a227baae29a61ffc73023427b43_icgraph">
+<area shape="rect" id="node2" href="gtest_8cpp.html#a8fb6d2270d2e7538236af1c2317e015b" title="TEST" alt="" coords="212,5,267,32"/>
+<area shape="rect" id="node3" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="212,56,267,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac0475018aff3771999ea32000c2fb898"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0475018aff3771999ea32000c2fb898">&#9670;&nbsp;</a></span>mapping()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt;bool,std::list&lt;std::string&gt; &gt; mapping::mapping </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>file_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>lenght</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Функция выбора подстрок заданного размера из файла с определенными границами строк </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Возвращает пару: first - флаг, сигнализирующий, что была считана самая длинная строка в диапазоне в список искомых подстрок, second - список искомых подстрок </dd></dl>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacemapping_ac0475018aff3771999ea32000c2fb898_icgraph.png" border="0" usemap="#namespacemapping_ac0475018aff3771999ea32000c2fb898_icgraph" alt=""/></div>
+<map name="namespacemapping_ac0475018aff3771999ea32000c2fb898_icgraph" id="namespacemapping_ac0475018aff3771999ea32000c2fb898_icgraph">
+<area shape="rect" id="node2" href="gtest_8cpp.html#a1e09a4d443500f7e33bfa47463b6713f" title="TEST" alt="" coords="197,5,252,32"/>
+<area shape="rect" id="node3" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="197,56,252,83"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

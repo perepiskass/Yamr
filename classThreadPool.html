@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Yamr: Класс ThreadPool</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Yamr
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="classThreadPool-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle">
+<div class="title">Класс ThreadPool</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Класс обеспичивающий создание очереди потоков, и добавления в эти потоки задачь для выполнения  
+ <a href="classThreadPool.html#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="threadpool_8h_source.html">threadpool.h</a>&gt;</code></p>
+<div class="dynheader">
+Граф связей класса ThreadPool:</div>
+<div class="dyncontent">
+<div class="center"><img src="classThreadPool__coll__graph.png" border="0" usemap="#ThreadPool_coll__map" alt="Collaboration graph"/></div>
+<map name="ThreadPool_coll__map" id="ThreadPool_coll__map">
+</map>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:adaa66f54dc628d880cd996204ab0d3c3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThreadPool.html#adaa66f54dc628d880cd996204ab0d3c3">ThreadPool</a> (const size_t thread_count)</td></tr>
+<tr class="separator:adaa66f54dc628d880cd996204ab0d3c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed6eb4f80781a1302445eca547511393"><td class="memTemplParams" colspan="2">template&lt;class F , class... Args&gt; </td></tr>
+<tr class="memitem:aed6eb4f80781a1302445eca547511393"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classThreadPool.html#aed6eb4f80781a1302445eca547511393">addTask</a> (F &amp;&amp;f, Args &amp;&amp;... args) -&gt; std::future&lt; typename std::result_of&lt; F(Args...)&gt;::type &gt;</td></tr>
+<tr class="separator:aed6eb4f80781a1302445eca547511393"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44d3d2ab618970605e684efc216655eb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classThreadPool.html#a44d3d2ab618970605e684efc216655eb">~ThreadPool</a> ()</td></tr>
+<tr class="memdesc:a44d3d2ab618970605e684efc216655eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Добавляем задачу и сразу получаем на нее объект future.  <a href="#a44d3d2ab618970605e684efc216655eb">Подробнее...</a><br /></td></tr>
+<tr class="separator:a44d3d2ab618970605e684efc216655eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Класс обеспичивающий создание очереди потоков, и добавления в эти потоки задачь для выполнения </p>
+</div><h2 class="groupheader">Конструктор(ы)</h2>
+<a id="adaa66f54dc628d880cd996204ab0d3c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adaa66f54dc628d880cd996204ab0d3c3">&#9670;&nbsp;</a></span>ThreadPool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ThreadPool::ThreadPool </td>
+          <td>(</td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>thread_count</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a44d3d2ab618970605e684efc216655eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44d3d2ab618970605e684efc216655eb">&#9670;&nbsp;</a></span>~ThreadPool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ThreadPool::~ThreadPool </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Добавляем задачу и сразу получаем на нее объект future. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Методы</h2>
+<a id="aed6eb4f80781a1302445eca547511393"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed6eb4f80781a1302445eca547511393">&#9670;&nbsp;</a></span>addTask()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class F , class... Args&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">auto ThreadPool::addTask </td>
+          <td>(</td>
+          <td class="paramtype">F &amp;&amp;&#160;</td>
+          <td class="paramname"><em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Args &amp;&amp;...&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> -&gt; std::future&lt;typename std::result_of&lt;F(Args...)&gt;::type&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>создаем указатель на объект packaged_task с типом который возвращает наша переданая функция f и связываем данный объект с данной функцией.</p>
+<p>получаем объект future (будущий результат) из указателя на задачу</p>
+<p>добавляем лямбду функцию в очередь задачь с вызовом нашей сформированной задачи(task) </p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов класса находятся в файле:<ul>
+<li>include/<a class="el" href="threadpool_8h_source.html">threadpool.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>
