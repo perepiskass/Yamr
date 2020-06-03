@@ -115,6 +115,9 @@ include(CPack)
 enable_testing()
 
 add_test(version_test_case gtest)
+add_test(threadpool_test_case gtest)
+add_test(mapping_test_case gtest)
+add_test(reduce_test_case gtest)
 
 
 

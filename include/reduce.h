@@ -59,12 +59,12 @@ namespace reduce
     std::vector<std::pair<size_t,size_t>> getBorders(const std::list<std::string>& source,size_t r)
     {
         std::vector<std::pair<size_t,size_t>> result;
+        if (r > source.size()) r = source.size();
         if(r == 1)
         {
             result.emplace_back(std::make_pair(0,source.size()));
             return result;
         }
-        else if (r > source.size()) r = source.size();
         
         size_t part_size = source.size() / r;
         std::vector<size_t> offsets;

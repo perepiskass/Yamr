@@ -37,7 +37,6 @@ ThreadPool::ThreadPool(const size_t thread_count):stop(false)
                 // while(true)      Каждый процесс получает по одной задаче, если оставляем цикл то возможно один процесс будет отрабатывать больше чем один раз
                 // {
                     std::function<void()> task;
-
                     {
                         std::unique_lock<std::mutex> lock(this->queue_mutex);
                         this->cv.wait(lock,[this]{ return this->stop || !tasks.empty(); });
